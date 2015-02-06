@@ -32,8 +32,6 @@
             this.ButtonSaveAs = new System.Windows.Forms.Button();
             this.ButtonSave = new System.Windows.Forms.Button();
             this.ALinksGrid = new System.Windows.Forms.DataGridView();
-            this.ButtonDeleteTitles = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HRef = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +39,8 @@
             this.TabIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InATag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Delete = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ButtonDeleteTitles = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ALinksGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,26 +97,7 @@
             this.ALinksGrid.RowHeadersVisible = false;
             this.ALinksGrid.Size = new System.Drawing.Size(866, 348);
             this.ALinksGrid.TabIndex = 4;
-            // 
-            // ButtonDeleteTitles
-            // 
-            this.ButtonDeleteTitles.Location = new System.Drawing.Point(740, 1);
-            this.ButtonDeleteTitles.Name = "ButtonDeleteTitles";
-            this.ButtonDeleteTitles.Size = new System.Drawing.Size(114, 28);
-            this.ButtonDeleteTitles.TabIndex = 5;
-            this.ButtonDeleteTitles.Text = "Delete all other titles";
-            this.ButtonDeleteTitles.UseVisualStyleBackColor = true;
-            this.ButtonDeleteTitles.Click += new System.EventHandler(this.ButtonDeleteTitles_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(285, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(457, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Every SVG file is automatically processed, such as adding cursor, target, and tab" +
-    "index attributes";
+            this.ALinksGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ALinksGrid_CellContentClick);
             // 
             // ID
             // 
@@ -163,6 +144,26 @@
             this.Delete.HeaderText = "Delete?";
             this.Delete.Name = "Delete";
             this.Delete.Width = 50;
+            // 
+            // ButtonDeleteTitles
+            // 
+            this.ButtonDeleteTitles.Location = new System.Drawing.Point(740, 1);
+            this.ButtonDeleteTitles.Name = "ButtonDeleteTitles";
+            this.ButtonDeleteTitles.Size = new System.Drawing.Size(114, 28);
+            this.ButtonDeleteTitles.TabIndex = 5;
+            this.ButtonDeleteTitles.Text = "Delete all other titles";
+            this.ButtonDeleteTitles.UseVisualStyleBackColor = true;
+            this.ButtonDeleteTitles.Click += new System.EventHandler(this.ButtonDeleteTitles_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(285, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(457, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Every SVG file is automatically processed, such as adding cursor, target, and tab" +
+    "index attributes";
             // 
             // Form1
             // 

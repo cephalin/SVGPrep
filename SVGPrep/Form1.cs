@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.IO;
 using System.Xml.Linq;
+using System.Diagnostics;
 
 namespace SVGPrep
 {
@@ -337,6 +338,14 @@ namespace SVGPrep
                 break;
             }
             return newId;
+        }
+
+        private void ALinksGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1)  // link column
+            {
+                Process.Start(ALinksGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+            }
         }
     }
 
