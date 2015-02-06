@@ -355,6 +355,11 @@ namespace SVGPrep
             return newId;
         }
 
+        /// <summary>
+        /// Open a clicked link in the browser
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ALinksGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 1)  // link column
