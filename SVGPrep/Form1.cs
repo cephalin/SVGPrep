@@ -23,6 +23,7 @@ namespace SVGPrep
         string formTitle = "SVG Prep";
         XNamespace ns = "http://www.w3.org/2000/svg";
         XNamespace xlink = "http://www.w3.org/1999/xlink";
+        string hoverText = "\n.hover_group:hover path {stroke:#26a9e0;stroke-width:2px;}";
 
 
         public Form1()
@@ -75,6 +76,9 @@ namespace SVGPrep
 
             // Process SVG DOM and populate the grid
 
+            if (!svg.Root.Element(ns + "style").Value.Contains(".hover_group"))
+                svg.Root.Element(ns + "style").Value += hoverText;
+
             ALinksGrid.AutoGenerateColumns = false;
             ALinksGrid.Rows.Clear();
             foreach (XElement alink in svg.Descendants(ns + "a"))
@@ -83,6 +87,17 @@ namespace SVGPrep
                 alink.SetAttributeValue("target", "_blank");    // set target="_blank"
                 if(alink.Attribute("tabindex") == null)         // set tabindex="0" if not exist
                     alink.SetAttributeValue("tabindex", "0");
+
+                // set class="hover_group" for all groups with <a> as immediate parent
+
+                foreach (XElement group in alink.Elements(ns + "g"))
+                {
+                    XAttribute attr = group.Attribute("class");
+                    if (attr != null)
+                        attr.Value = "hover_group;" + attr.Value;
+                    else
+                    group.SetAttributeValue("class", "hover_group");
+                }
 
                 // create <title> if not exist in decendents
 
