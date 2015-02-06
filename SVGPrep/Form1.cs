@@ -23,7 +23,7 @@ namespace SVGPrep
         string formTitle = "SVG Prep";
         XNamespace ns = "http://www.w3.org/2000/svg";
         XNamespace xlink = "http://www.w3.org/1999/xlink";
-        string hoverText = "\n.hover_group:hover path {stroke:#26a9e0;stroke-width:2px;}";
+        string hoverText = "\n.hover_group:hover path, .hover_group:hover ellipse, .hover_group:hover rect {stroke:#26a9e0;stroke-width:2px;}";
 
 
         public Form1()
