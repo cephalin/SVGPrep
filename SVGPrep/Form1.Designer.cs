@@ -41,12 +41,17 @@
             this.Delete = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ButtonDeleteTitles = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkRemoveWhite = new System.Windows.Forms.CheckBox();
+            this.chkRemoveTitles = new System.Windows.Forms.CheckBox();
+            this.chkAddHighlight = new System.Windows.Forms.CheckBox();
+            this.chkAddCustomProperties = new System.Windows.Forms.CheckBox();
+            this.chkAddLayers = new System.Windows.Forms.CheckBox();
+            this.chkAddPanZoom = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ALinksGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // ButtonOpen
             // 
-            this.ButtonOpen.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ButtonOpen.Location = new System.Drawing.Point(1, 1);
             this.ButtonOpen.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonOpen.Name = "ButtonOpen";
@@ -72,7 +77,7 @@
             this.ButtonSave.Enabled = false;
             this.ButtonSave.Location = new System.Drawing.Point(205, 1);
             this.ButtonSave.Name = "ButtonSave";
-            this.ButtonSave.Size = new System.Drawing.Size(79, 27);
+            this.ButtonSave.Size = new System.Drawing.Size(79, 28);
             this.ButtonSave.TabIndex = 3;
             this.ButtonSave.Text = "Save";
             this.ButtonSave.UseVisualStyleBackColor = true;
@@ -92,7 +97,7 @@
             this.InATag,
             this.Delete});
             this.ALinksGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ALinksGrid.Location = new System.Drawing.Point(0, 35);
+            this.ALinksGrid.Location = new System.Drawing.Point(0, 63);
             this.ALinksGrid.Name = "ALinksGrid";
             this.ALinksGrid.RowHeadersVisible = false;
             this.ALinksGrid.Size = new System.Drawing.Size(866, 348);
@@ -147,7 +152,7 @@
             // 
             // ButtonDeleteTitles
             // 
-            this.ButtonDeleteTitles.Location = new System.Drawing.Point(740, 1);
+            this.ButtonDeleteTitles.Location = new System.Drawing.Point(482, 37);
             this.ButtonDeleteTitles.Name = "ButtonDeleteTitles";
             this.ButtonDeleteTitles.Size = new System.Drawing.Size(114, 28);
             this.ButtonDeleteTitles.TabIndex = 5;
@@ -158,18 +163,88 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(285, 19);
+            this.label1.Location = new System.Drawing.Point(-2, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(457, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Every SVG file is automatically processed, such as adding cursor, target, and tab" +
     "index attributes";
             // 
+            // chkRemoveWhite
+            // 
+            this.chkRemoveWhite.AutoSize = true;
+            this.chkRemoveWhite.Location = new System.Drawing.Point(324, 1);
+            this.chkRemoveWhite.Name = "chkRemoveWhite";
+            this.chkRemoveWhite.Size = new System.Drawing.Size(126, 17);
+            this.chkRemoveWhite.TabIndex = 7;
+            this.chkRemoveWhite.Text = "Remove &white space";
+            this.chkRemoveWhite.UseVisualStyleBackColor = true;
+            // 
+            // chkRemoveTitles
+            // 
+            this.chkRemoveTitles.AutoSize = true;
+            this.chkRemoveTitles.Checked = true;
+            this.chkRemoveTitles.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRemoveTitles.Location = new System.Drawing.Point(324, 17);
+            this.chkRemoveTitles.Name = "chkRemoveTitles";
+            this.chkRemoveTitles.Size = new System.Drawing.Size(120, 17);
+            this.chkRemoveTitles.TabIndex = 8;
+            this.chkRemoveTitles.Text = "Remove other &titles ";
+            this.chkRemoveTitles.UseVisualStyleBackColor = true;
+            // 
+            // chkAddHighlight
+            // 
+            this.chkAddHighlight.AutoSize = true;
+            this.chkAddHighlight.Checked = true;
+            this.chkAddHighlight.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAddHighlight.Location = new System.Drawing.Point(456, 1);
+            this.chkAddHighlight.Name = "chkAddHighlight";
+            this.chkAddHighlight.Size = new System.Drawing.Size(140, 17);
+            this.chkAddHighlight.TabIndex = 9;
+            this.chkAddHighlight.Text = "Show &highlight on hover";
+            this.chkAddHighlight.UseVisualStyleBackColor = true;
+            // 
+            // chkAddCustomProperties
+            // 
+            this.chkAddCustomProperties.AutoSize = true;
+            this.chkAddCustomProperties.Location = new System.Drawing.Point(456, 17);
+            this.chkAddCustomProperties.Name = "chkAddCustomProperties";
+            this.chkAddCustomProperties.Size = new System.Drawing.Size(184, 17);
+            this.chkAddCustomProperties.TabIndex = 10;
+            this.chkAddCustomProperties.Text = "Show &custom properties on hover";
+            this.chkAddCustomProperties.UseVisualStyleBackColor = true;
+            // 
+            // chkAddLayers
+            // 
+            this.chkAddLayers.AutoSize = true;
+            this.chkAddLayers.Location = new System.Drawing.Point(646, 1);
+            this.chkAddLayers.Name = "chkAddLayers";
+            this.chkAddLayers.Size = new System.Drawing.Size(110, 17);
+            this.chkAddLayers.TabIndex = 11;
+            this.chkAddLayers.Text = "Show list of &layers";
+            this.chkAddLayers.UseVisualStyleBackColor = true;
+            // 
+            // chkAddPanZoom
+            // 
+            this.chkAddPanZoom.AutoSize = true;
+            this.chkAddPanZoom.Location = new System.Drawing.Point(646, 17);
+            this.chkAddPanZoom.Name = "chkAddPanZoom";
+            this.chkAddPanZoom.Size = new System.Drawing.Size(163, 17);
+            this.chkAddPanZoom.TabIndex = 12;
+            this.chkAddPanZoom.Text = "Show &pan and zoom controls";
+            this.chkAddPanZoom.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(866, 383);
+            this.ClientSize = new System.Drawing.Size(866, 411);
+            this.Controls.Add(this.chkAddPanZoom);
+            this.Controls.Add(this.chkAddLayers);
+            this.Controls.Add(this.chkAddCustomProperties);
+            this.Controls.Add(this.chkAddHighlight);
+            this.Controls.Add(this.chkRemoveTitles);
+            this.Controls.Add(this.chkRemoveWhite);
             this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.ButtonDeleteTitles);
             this.Controls.Add(this.label1);
@@ -201,6 +276,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TabIndex;
         private System.Windows.Forms.DataGridViewCheckBoxColumn InATag;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Delete;
+        private System.Windows.Forms.CheckBox chkRemoveWhite;
+        private System.Windows.Forms.CheckBox chkRemoveTitles;
+        private System.Windows.Forms.CheckBox chkAddHighlight;
+        private System.Windows.Forms.CheckBox chkAddCustomProperties;
+        private System.Windows.Forms.CheckBox chkAddLayers;
+        private System.Windows.Forms.CheckBox chkAddPanZoom;
     }
 }
 

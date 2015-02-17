@@ -1,0 +1,55 @@
+﻿svg:not(:root) { 
+    overflow: hidden; 
+    border: 2px solid black;
+    left:0;
+    top:0;
+    vertical-align:top;
+} 
+#nav {
+    height:600px;
+    max-height:600px;
+    padding:5px; 
+    vertical-align:top;
+    font-family:'Segoe UI';
+    font-size:1em;
+    left:0;
+    top:0;
+    border: 2px solid black;
+}
+#properties {
+    max-height:600px;
+    height:600px;
+    padding:5px; 
+    vertical-align:top;
+    font-family:'Segoe UI';
+    font-size:1em;
+    border: 2px solid black;
+    width:300px;
+    overflow-y:hidden;
+}
+.section {
+    width: 85%;
+    top:0;
+    vertical-align:top;
+}
+.compass {
+    fill: #fff;
+    stroke: #000;
+    stroke-width: 1.5;
+}
+
+.button {
+    fill: #225EA8;
+    stroke: #0C2C84;
+    stroke-miterlimit: 6;
+    stroke-linecap: round;
+}
+
+.button:hover {
+    stroke-width: 2;
+}
+
+.plus-minus {
+    fill: #fff;
+    pointer-events: none;
+}

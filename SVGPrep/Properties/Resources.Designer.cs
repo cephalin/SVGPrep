@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SVGPrep.Properties
-{
-
-
+namespace SVGPrep.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,49 +22,276 @@ namespace SVGPrep.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SVGPrep.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to svg:not(:root) { 
+        ///    overflow: hidden; 
+        ///    border: 2px solid black;
+        ///    left:0;
+        ///    top:0;
+        ///    vertical-align:top;
+        ///} 
+        ///#nav {
+        ///    height:600px;
+        ///    max-height:600px;
+        ///    padding:5px; 
+        ///    vertical-align:top;
+        ///    font-family:&apos;Segoe UI&apos;;
+        ///    font-size:1em;
+        ///    left:0;
+        ///    top:0;
+        ///    border: 2px solid black;
+        ///}
+        ///#properties {
+        ///    max-height:600px;
+        ///    height:600px;
+        ///    padding:5px; 
+        ///    vertical-align:top;
+        ///    font-family:&apos;Segoe UI&apos;;
+        ///    font-size:1em;
+        ///    border: 2px solid black;
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string css {
+            get {
+                return ResourceManager.GetString("css", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to svg:not(:root) { 
+        ///    overflow: hidden; 
+        ///    border: 2px solid black;
+        ///} 
+        ///#nav {
+        ///    height:100%;
+        ///    padding:10px; 
+        ///    vertical-align:top;
+        ///    font-family:&apos;Segoe UI&apos;;
+        ///    font-size:1em;
+        ///    left:0;
+        ///    top:0;
+        ///}
+        ///.section {
+        ///    width: 85%;
+        ///    top:0;
+        ///    vertical-align:top;
+        ///}.
+        /// </summary>
+        internal static string CSSGeneral {
+            get {
+                return ResourceManager.GetString("CSSGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to g g:hover path {
+        ///    stroke:#26a9e0;
+        ///    stroke-width: 1px;
+        ///}
+        ///g g:hover rect {
+        ///    stroke:#26a9e0;
+        ///    stroke-width: 1px;
+        ///}.
+        /// </summary>
+        internal static string CSSHighlight {
+            get {
+                return ResourceManager.GetString("CSSHighlight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .compass {
+        ///    fill: #fff;
+        ///    stroke: #000;
+        ///    stroke-width: 1.5;
+        ///}
+        ///
+        ///.button {
+        ///    fill: #225EA8;
+        ///    stroke: #0C2C84;
+        ///    stroke-miterlimit: 6;
+        ///    stroke-linecap: round;
+        ///}
+        ///
+        ///.button:hover {
+        ///    stroke-width: 2;
+        ///}
+        ///
+        ///.plus-minus {
+        ///    fill: #fff;
+        ///    pointer-events: none;
+        ///}.
+        /// </summary>
+        internal static string CSSPanZoom {
+            get {
+                return ResourceManager.GetString("CSSPanZoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .tooltip {
+        ///    font-size: 1em;
+        ///    font-family:&apos;Segoe UI&apos;;
+        ///    fill: black;
+        ///}
+        ///.tooltip_bg {
+        ///    fill:lightyellow;
+        ///    stroke:black;
+        ///    stroke-width:2;
+        ///    opacity:.9;
+        ///}.
+        /// </summary>
+        internal static string CSSTooltip {
+            get {
+                return ResourceManager.GetString("CSSTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /*!
+        /// * jQuery JavaScript Library v2.1.1
+        /// * http://jquery.com/
+        /// *
+        /// * Includes Sizzle.js
+        /// * http://sizzlejs.com/
+        /// *
+        /// * Copyright 2005, 2014 jQuery Foundation, Inc. and other contributors
+        /// * Released under the MIT license
+        /// * http://jquery.org/license
+        /// *
+        /// * Date: 2014-05-01T17:11Z
+        /// */
+        ///
+        ///(function( global, factory ) {
+        ///
+        ///	if ( typeof module === &quot;object&quot; &amp;&amp; typeof module.exports === &quot;object&quot; ) {
+        ///		// For CommonJS and CommonJS-like environments where a proper window is present,
+        ///		// execute the factory and get jQuery [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string jquery_2_1_1 {
+            get {
+                return ResourceManager.GetString("jquery_2_1_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;title&gt;&lt;/title&gt;
+        ///    &lt;link href=&quot;svg.css&quot; rel=&quot;stylesheet&quot; /&gt;
+        ///    &lt;script src=&quot;jquery-2.1.1.js&quot;&gt;&lt;/script&gt;
+        ///    &lt;script src=&quot;svg.js&quot;&gt;&lt;/script&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///    &lt;table&gt;
+        ///        &lt;tr&gt;
+        ///            &lt;td id=&quot;nav&quot;&gt;
+        ///            &lt;/td&gt;
+        ///            &lt;td class=&quot;.section&quot;&gt;
+        ///                &lt;div id=&quot;section&quot;&gt;
+        ///		[SVG HERE]		
+        ///                &lt;/div&gt;
+        ///            &lt;/td&gt;
+        ///            &lt;td id=&quot;properties&quot;&gt;
+        ///            &lt;/td&gt;
+        ///        &lt;/tr&gt;
+        ///    &lt;/ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string page {
+            get {
+                return ResourceManager.GetString("page", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to var transMatrix = [1, 0, 0, 1, 0, 0];
+        ///var mapMatrix;
+        ///var width;
+        ///var height;
+        ///var svgDoc;
+        ///var tooltip_bg;
+        ///var svgPosition;
+        ///var svgElement;
+        ///
+        ///$(document).ready(function () {
+        ///
+        ///});
+        ///
+        ///function handleCustProps() {
+        ///    var customProperties = document.getElementById(&quot;properties&quot;);
+        ///    svgElement = document.getElementsByTagName(&quot;svg&quot;)[0];
+        ///    //tooltip_bg = document.getElementById(&quot;tooltip_bg&quot;);
+        ///    var svg = document.getElementById(&quot;svg&quot;);
+        ///    var allcps = $(&quot;v\\:custprops&quot;);
+        ///    for (i = 0; i &lt; all [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string svg {
+            get {
+                return ResourceManager.GetString("svg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;g id=&quot;svg&quot;&gt;
+        ///                        &lt;rect class=&quot;tooltip_bg&quot; id=&quot;tooltip_bg&quot; x=&quot;0&quot; y=&quot;0&quot; rx=&quot;5&quot; ry=&quot;5&quot; width=&quot;50&quot; height=&quot;50&quot; visibility=&quot;hidden&quot; /&gt;
+        ///                        &lt;/g&gt;.
+        /// </summary>
+        internal static string SVGCustomProperties {
+            get {
+                return ResourceManager.GetString("SVGCustomProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;g id=&quot;panzoom&quot;&gt;
+        ///                            &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;42&quot; fill=&quot;white&quot; stroke=&quot;black&quot; /&gt;
+        ///                            &lt;path class=&quot;button&quot; onclick=&quot;pan(0,50)&quot; d=&quot;M50 10 l12 20 a40,70 0 0,0 -24,0z&quot; /&gt;
+        ///                            &lt;path class=&quot;button&quot; onclick=&quot;pan(50,0)&quot; d=&quot;M10 50 l20 -12 a70,40 0 0,0 0,24z&quot; /&gt;
+        ///                            &lt;path class=&quot;button&quot; onclick=&quot;pan(0,-50)&quot; d=&quot;M50 90 l12 -20 a40,70 0 0,1 -24,0z&quot; /&gt;
+        ///                            &lt;path class=&quot;button&quot; onclick=&quot;pan(-50,0) [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SVGPanZoom {
+            get {
+                return ResourceManager.GetString("SVGPanZoom", resourceCulture);
             }
         }
     }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +10,8 @@ using System.Xml;
 using System.IO;
 using System.Xml.Linq;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
+
 
 namespace SVGPrep
 {
@@ -69,7 +70,7 @@ namespace SVGPrep
 
             OpenFileDialog openFile1 = new OpenFileDialog();
             openFile1.Filter = "SVG Files|*.svg";
-            if (openFile1.ShowDialog() != DialogResult.OK)
+            if (openFile1.ShowDialog() != DialogResult.OK || openFile1.FileName == "")
                 return;
 
             svg = XDocument.Load(openFile1.FileName);
@@ -178,7 +179,7 @@ namespace SVGPrep
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "SVG files (*.svg)|*.svg";
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK && saveFileDialog1.FileName != "")
             {
                 try 
                 {
@@ -198,8 +199,13 @@ namespace SVGPrep
                     }
 
                     currentFile = saveFileDialog1.FileName;
+
                     this.Text = String.Format("{0} - {1}", formTitle, currentFile);
                     isGridDirty = false;
+
+                    #region Telmo's functionality
+                    cmdTransform_Click();
+                    #endregion
                 }
                 catch (Exception ex)
                 {
@@ -236,6 +242,10 @@ namespace SVGPrep
                     }
 
                     isGridDirty = false;
+                    
+                    #region Telmo's functionality
+                    cmdTransform_Click();
+                    #endregion
                 }
                 catch (Exception ex)
                 {
@@ -367,6 +377,204 @@ namespace SVGPrep
                 Process.Start(ALinksGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
             }
         }
+
+
+        #region Telmo's CSISVGTransform code
+
+        string result;
+        string svgInput;
+        string pattern;
+        string js;
+        string jquery;
+        string html;
+        string css;
+        Regex rgx;
+
+        private void cmdTransform_Click(/*object sender, EventArgs e*/)
+        {
+            try
+            {
+                //read SVG file. ignore first three lines
+                using (StreamReader sr = new StreamReader(/*txtInput.Text*/currentFile))
+                {
+                    sr.ReadLine();
+                    sr.ReadLine();
+                    sr.ReadLine();
+                    svgInput = sr.ReadToEnd();
+                }
+
+                //get html, js, jquery
+                html = Properties.Resources.page;
+                js = Properties.Resources.svg;
+                jquery = Properties.Resources.jquery_2_1_1;
+                css = Properties.Resources.css;
+
+                GeneralTransformations();
+                AddGeneralCSS();
+                //RemoveTitles();   --cephas: remove duplicate feature
+                AddHighlight();
+                AddCustomProperties();
+                AddLayers();
+                AddPanZoom();
+                RemoveWhiteSpaces();
+
+                CreateOutput(/*txtOutput.Text*/new FileInfo(currentFile).DirectoryName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CreateOutput(string outputFolder)
+        {
+            //Add svg to html
+            html = html.Replace("[SVG HERE]", result);
+
+            //Write files to output folder
+            File.WriteAllText(outputFolder + "\\page.html", html);
+            File.WriteAllText(outputFolder + "\\svg.js", js);
+            File.WriteAllText(outputFolder + "\\jquery-2.1.1.js", jquery);
+            File.WriteAllText(outputFolder + "\\svg.css", css);
+
+            //Explain ActiveX message
+            MessageBox.Show("This application will attempt to show your SVG graphics now. If you see a message on your browser asking to allow ActiveX controls to run, please click ALLOW BLOCKED CONTENT. You only see this message because you are opening a file from your own computer. Once the file is hosted on a web server, users will NOT see this message.");
+
+            //Open browser
+            Process.Start("IExplore.exe", outputFolder + "\\page.html");
+        }
+
+        private void AddGeneralCSS()
+        {
+            pattern = "</style>";
+            rgx = new Regex(pattern);
+            result = rgx.Replace(result, Properties.Resources.CSSGeneral + "</style>");
+        }
+
+        private void AddPanZoom()
+        {
+            if (chkAddPanZoom.Checked)
+            {
+                //CSS
+                pattern = "</style>";
+                rgx = new Regex(pattern);
+                result = rgx.Replace(result, Properties.Resources.CSSPanZoom + "</style>");
+
+                //SVG
+                pattern = "</svg>";
+                rgx = new Regex(pattern);
+                result = rgx.Replace(result, Properties.Resources.SVGPanZoom + "</svg>");
+            }
+        }
+
+        private void AddCustomProperties()
+        {
+            if (chkAddCustomProperties.Checked)
+            {
+                //CSS
+                pattern = "</style>";
+                rgx = new Regex(pattern);
+                result = rgx.Replace(result, Properties.Resources.CSSTooltip + "</style>");
+
+                //SVG
+                pattern = "</svg>";
+                rgx = new Regex(pattern);
+                result = rgx.Replace(result, Properties.Resources.SVGCustomProperties + "</svg>");
+
+                //JS
+                js = js.Replace("$(document).ready(function () {", "$(document).ready(function () { handleCustProps();");
+            }
+        }
+
+        private void AddLayers()
+        {
+            if (chkAddLayers.Checked)
+            {
+                //JS
+                js = js.Replace("$(document).ready(function () {", "$(document).ready(function () { createLayers();");
+            }
+        }
+
+        private void AddHighlight()
+        {
+            if (chkAddHighlight.Checked)
+            {
+                //CSS
+                result = result.Replace("</style>", Properties.Resources.CSSHighlight + "</style>");
+            }
+        }
+
+        private void RemoveTitles()
+        {
+            if (chkRemoveTitles.Checked)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (string line in result.Split('\n'))
+                {
+                    if (!line.Trim().StartsWith("<title>"))
+                    {
+                        sb.AppendLine(line);
+                    }
+                }
+                result = sb.ToString();
+            }
+        }
+
+        private void RemoveWhiteSpaces()
+        {
+            if (chkRemoveWhite.Checked)
+            {
+                pattern = "\\s+";
+                rgx = new Regex(pattern);
+                result = rgx.Replace(result, " ");
+
+                //html = rgx.Replace(html, " ");
+                //js = rgx.Replace(js, " ");
+                //css = rgx.Replace(css, " ");
+            }
+        }
+
+        private void GeneralTransformations()
+        {
+            //Remove CDATA content
+            pattern = @"<!\[CDATA\[";
+            rgx = new Regex(pattern);
+            result = rgx.Replace(svgInput, "");
+
+            pattern = @"]]>";
+            rgx = new Regex(pattern);
+            result = rgx.Replace(result, "");
+
+            //Add scroll overflow
+            pattern = @"<svg ";
+            rgx = new Regex(pattern);
+            result = rgx.Replace(result, "<svg overflow=\"scroll\"");
+
+            //Change dimensions
+            pattern = "width=\"\\d*[.]\\d*in\"";
+            rgx = new Regex(pattern);
+            result = rgx.Replace(result, "width=\"800\"");
+
+            pattern = "width=\"\\d*in\"";
+            rgx = new Regex(pattern);
+            result = rgx.Replace(result, "width=\"800\"");
+
+            pattern = "height=\"\\d*[.]\\d*in\"";
+            rgx = new Regex(pattern);
+            result = rgx.Replace(result, "height=\"600\" onload=\"init(evt)\"");
+
+            pattern = "height=\"\\d*in\"";
+            rgx = new Regex(pattern);
+            result = rgx.Replace(result, "height=\"600\" onload=\"init(evt)\"");
+
+            //Add transform matrix
+            pattern = "v:groupContext=\"foregroundPage\"";
+            rgx = new Regex(pattern);
+            result = rgx.Replace(result, "id=\"all\" transform=\"matrix(1 0 0 1 0 0)\" v:groupContext=\"foregroundPage\"");
+        }
+
+        #endregion
+
     }
 
 }
